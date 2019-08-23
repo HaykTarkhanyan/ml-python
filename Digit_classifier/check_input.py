@@ -1,6 +1,5 @@
 import cv2
 
-
 def check_input(path):
     try:
         im = cv2.imread(path)
