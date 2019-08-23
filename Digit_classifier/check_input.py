@@ -1,5 +1,8 @@
 import cv2
 
+# Thats a helping function
+# Checks if given directory is empty
+
 def check_input(path):
     try:
         im = cv2.imread(path)
@@ -7,15 +10,4 @@ def check_input(path):
     except:
         print("Please check your input directory")
         return False
-
-    # sizes = im.shape
-    # if sizes[0] > 50 or sizes[1] > 50:
-    #     print("Try smaller image")
-    #     return False
-    # elif sizes[0] < 12 or sizes[1] < 12:
-    #     print("Try bigger image")
-    #     return False
-    # elif not sizes[2] == 3:
-    #     print("Model is suited to rgb images")
-    #     return False
     return True
