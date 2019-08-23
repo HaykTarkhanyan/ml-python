@@ -13,10 +13,11 @@ from keras.layers import Conv2D, Dropout, MaxPooling2D
 
 # Model will be saved in ckpt folder
 FOLDER_TO_SAVE = 'ckpt'
+FOLDER_TO_LOAD_DATA = 'data'
 
 # load data from csv
-data = pd.read_csv(os.path.join('data', 'train.csv'))
-test = pd.read_csv(os.path.join('data', 'test.csv'))
+data = pd.read_csv(os.path.join(FOLDER_TO_LOAD_DATA, 'train.csv'))
+test = pd.read_csv(os.path.join(FOLDER_TO_LOAD_DATA, 'test.csv'))
 
 # get image labels
 y_train = data["label"]
