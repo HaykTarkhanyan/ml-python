@@ -5,7 +5,7 @@ ConvLayer(32 filters of size (3,3)) --> ReLU --> ConvLayer(64 filters of size (3
 
 **Data description**
 
-Dataset is in data folder it contains 42.000 train images and 28.000 images for test
+Dataset is in data folder it contains 42.000 train images and 28.000 for test
 images are 28x28 grayscale images taken from MNIST dataset
 
 
