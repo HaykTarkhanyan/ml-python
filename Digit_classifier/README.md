@@ -8,8 +8,6 @@ ConvLayer(32 filters of size (3,3)) --> ReLU --> ConvLayer(64 filters of size (3
 Dataset is in data folder it contains 42.000 train images and 28.000 images for test
 images are 28x28 grayscale images taken from MNIST dataset
 
-check_input file is for making sure that network has been given valid image
-check_input looks if directory was wrong or image was extremely big or small
 
 **COMMANDS:**
 
