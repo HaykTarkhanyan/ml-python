@@ -1,0 +1,5 @@
+scikit-learn==0.2
+numpy==1.11
+pandas==0.19
+os==3.2
+argparse==3.5

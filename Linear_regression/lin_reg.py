@@ -1,12 +1,15 @@
-import argparse
 import os
-import pandas as pd
+import argparse
 import numpy as np
+import pandas as pd
 from sklearn import linear_model
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 
-train_features = pd.read_csv(os.path.join("data", "Educ.csv"))
+# folder where data is
+LOAD_DATA_FROM = 'data'
+
+train_features = pd.read_csv(os.path.join(LOAD_DATA_FROM, "Educ.csv"))
 # answers are in 'lnw' column
 train_labels = train_features["lnw"]
 # want need taht column since we set it to specaial variable
