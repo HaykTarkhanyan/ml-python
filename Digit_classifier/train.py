@@ -1,17 +1,18 @@
-import pandas as pd
-import numpy as np
+import os
 import cv2
 import keras
-import os
 import argparse
-from keras.models import Sequential
+import numpy as np
+import pandas as pd
 from keras.layers import Dense
 from keras.layers import Flatten
+from keras.models import Sequential
+from keras.models import model_from_json
+from keras.preprocessing.image import img_to_array
 from keras.layers import Conv2D, Dropout, MaxPooling2D
 
-from keras.preprocessing.image import img_to_array
-
-from keras.models import model_from_json
+# Model will be saved in ckpt folder
+FOLDER_TO_SAVE = 'ckpt'
 
 # load data from csv
 data = pd.read_csv(os.path.join('data', 'train.csv'))
@@ -29,9 +30,6 @@ x_train = np.array([i.reshape((28, 28, 1)) for i in x_train])
 y_train = keras.utils.to_categorical(y_train, num_classes)
 
 # ConvNet is taken from keras documentation
-
-input_shape = x_train[0].shape
-
 model = Sequential()
 
 model.add(Conv2D(32, kernel_size=(3, 3),
@@ -58,8 +56,8 @@ history = model.fit(x_train, y_train,
 
 # serialize model to JSON
 model_json = model.to_json()
-with open(os.path.join('ckpt', "model.json"), "w") as json_file:
+with open(os.path.join(FOLDER_TO_SAVE, "model.json"), "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
-model.save_weights(os.path.join('ckpt', "model.h5"))
-print("Saved model to disk")
+model.save_weights(os.path.join(FOLDER_TO_SAVE, "model.h5"))
+print("Saved model to ckpt folder")
