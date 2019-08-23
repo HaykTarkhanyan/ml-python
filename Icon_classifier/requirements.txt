@@ -1,0 +1,7 @@
+cv2==4
+os==3.2
+keras==2.2
+pandas==0.19
+numpy==1.1.4
+tensorflow==2
+argparse==3.5
