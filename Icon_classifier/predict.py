@@ -1,41 +1,24 @@
-import os
-import cv2
-import argparse
 import numpy as np
-from check_input import check_input
-from keras.models import model_from_json
-from keras.preprocessing.image import img_to_array
+from utils import helpers
 
-classes = sorted(['facebook', 'twitter', 'whatsapp', 'linkedin', 'reddit'])
+CLASSES = sorted(['facebook', 'twitter', 'whatsapp', 'linkedin', 'reddit'])
 
-# initialize folder 
+# loading the model
 LOAD_MODEL_FROM = 'ckpt'
+loaded_model = helpers.load_model(LOAD_MODEL_FROM)
 
 
-# load json and create model
-json_file = open(os.path.join(LOAD_MODEL_FROM, 'model.json'),  'r')
-loaded_model_json = json_file.read()
-json_file.close()
-loaded_model = model_from_json(loaded_model_json)
-# load weights into new model
-loaded_model.load_weights(os.path.join(LOAD_MODEL_FROM, "model.h5"))
-print("Loaded model")
-
-
-parser = argparse.ArgumentParser()
-
-parser.add_argument('-inp_dir', type=str, required=True,
-                    help="specify path to image")
-
-args = parser.parse_args()
+# getting input from terminal
+args = helpers.argument_parser()
 path = args.inp_dir
 
-if check_input(path):
-    im = cv2.imread(path)
-    im.resize(25, 25, 3)
-    im = img_to_array(im)
-    im = np.array([im])
-
+# checking image is valid or not
+if helpers.check_input(path):
+    im = helpers.convert_image(path)
+    # print the prediction
     predic = loaded_model.predict(im)
-    print()
-    print(classes[np.array(predic).argmax()])
+    print(CLASSES[np.array(predic).argmax()])
+
+else:
+    print ("FAILED TO LOAD THE IMAGE")
+

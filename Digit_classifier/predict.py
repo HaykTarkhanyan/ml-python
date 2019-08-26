@@ -1,3 +1,4 @@
+import numpy as np
 from utils import helpers
 
 # loading model from specified fodler
@@ -9,7 +10,7 @@ args = helpers.argument_parser()
 path = args.inp_dir
 
 # before trying to predict making sure that directory is valid
-if check_input(path):
+if helpers.check_input(path):
     im = helpers.convert_image(path)
     # print the prediction
     print(loaded_model.predict(im).argmax())
