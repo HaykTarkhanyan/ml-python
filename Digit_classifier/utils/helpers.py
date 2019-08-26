@@ -62,7 +62,7 @@ def load_data(folder):
 
     return x_train, y_train, test
 
-def argument_parser():
+def argument_parser_for_train():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-model_save_dir', type=str, required=False,
@@ -81,7 +81,23 @@ def argument_parser():
     args = parser.parse_args()
     return args
 
-def convert_image(im):
+
+def argument_parser_for_test():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('-load_model_from', type=str, required=False,
+                        help="specify location of the model to be loaded",
+                        default='ckpt')
+    parser.add_argument('-input_image_dir', type=str, required=True,
+                        help="specify path to data",
+                        )
+
+
+    args = parser.parse_args()
+    return args
+
+
+def convert_image(path):
     # read image, resize it and return valid numpy array
     im = cv2.imread(path)
     im.resize(28, 28, 1)

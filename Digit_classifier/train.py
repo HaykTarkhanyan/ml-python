@@ -12,7 +12,7 @@ from keras.preprocessing.image import img_to_array
 
 # takes data location, path where to save model, 
 # num of epochs and batch size
-args = helpers.argument_parser()
+args = helpers.argument_parser_for_train()
 
 FOLDER_TO_SAVE = args.model_save_dir
 FOLDER_TO_LOAD_DATA = args.data_dir
