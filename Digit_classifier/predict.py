@@ -2,38 +2,24 @@ import os
 import cv2
 import argparse
 import numpy as np
+from utils import helpers
 from check_input import check_input
 from keras.models import model_from_json
 from keras.preprocessing.image import img_to_array
 
+# loading model from specified fodler
 LOAD_MODEL_FROM = 'ckpt'
+loaded_model = helpers.load_model(LOAD_MODEL_FROM)
 
-# load json and create model
-json_file = open(os.path.join(LOAD_MODEL_FROM, 'model_cnn.json'), 'r')
-loaded_model_json = json_file.read()
-json_file.close()
-loaded_model = model_from_json(loaded_model_json)
-# load weights into new model
-loaded_model.load_weights(os.path.join(LOAD_MODEL_FROM, 'model_cnn.h5'))
-print("Loaded model from ckpt folder")
-
-
-parser = argparse.ArgumentParser()
-
-parser.add_argument('-inp_dir', type=str, required=True,
-                    help="specify path to image")
-
-args = parser.parse_args()
+# getting input from terminal
+args = helpers.argument_parser()
 path = args.inp_dir
 
 # before trying to predict making sure that directory is valid
 if check_input(path):
-    im = cv2.imread(path)
-    im.resize(28, 28, 1)
-    im = img_to_array(im)
-    im = np.array([im])
-
+    im = helpers.convert_image(path)
+    # print the prediction
     print(loaded_model.predict(im).argmax())
-
+    
 else:
-    check_input(path)
+    print ("Failed to load image ")
