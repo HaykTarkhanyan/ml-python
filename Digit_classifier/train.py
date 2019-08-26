@@ -35,7 +35,6 @@ x_train = np.array([i.reshape((28, 28, 1)) for i in x_train])
 y_train = keras.utils.to_categorical(y_train, num_classes)
 
 
-
 model = keras_model(NUM_CLASSES)
 
 model.compile(optimizer='AdaDelta',

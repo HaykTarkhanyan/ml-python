@@ -21,6 +21,7 @@ loaded_model = model_from_json(loaded_model_json)
 loaded_model.load_weights(os.path.join(LOAD_MODEL_FROM))
 print("Loaded model")
 
+
 path = args.input_image_dir
 
 # before trying to predict making sure that directory is valid

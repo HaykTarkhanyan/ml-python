@@ -67,7 +67,7 @@ def argument_parser_for_train():
 
     parser.add_argument('-model_save_dir', type=str, required=False,
                         help="specify location where model will be saved",
-                        default='ckpt')
+                        default='pretrained_model')
     parser.add_argument('-data_dir', type=str, required=False,
                         help="specify path to data",
                         default='data')
@@ -87,7 +87,7 @@ def argument_parser_for_test():
 
     parser.add_argument('-load_model_from', type=str, required=False,
                         help="specify location of the model to be loaded",
-                        default='ckpt')
+                        default='pretrained_model')
     parser.add_argument('-input_image_dir', type=str, required=True,
                         help="specify path to data",
                         )
