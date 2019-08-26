@@ -63,11 +63,20 @@ def load_data(folder):
     return x_train, y_train, test
 
 def argument_parser():
-    # takes input directory via terminal
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('-inp_dir', type=str, required=True,
-                    help="specify path to image")
+    parser.add_argument('-model_save_dir', type=str, required=False,
+                        help="specify location where model will be saved",
+                        default='ckpt')
+    parser.add_argument('-data_dir', type=str, required=False,
+                        help="specify path to data",
+                        default='data')
+    parser.add_argument('-epochs', type=str, required=False,
+                        help="specify number of epochs to train",
+                        default='7')
+    parser.add_argument('-batch_size', type=str, required=False,
+                        help="specify batch_size",
+                        default='1')
 
     args = parser.parse_args()
     return args
@@ -79,24 +88,3 @@ def convert_image(im):
     im = img_to_array(im)
     im = np.array([im])
     return im
-
-def keras_model(num_classes):
-    # model taken from keras documentation
-    model = Sequential()
-
-    model.add(Conv2D(32, kernel_size=(3, 3),
-                    activation='relu',
-                    ))
-
-    model.add(Conv2D(64, (3, 3), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.25))
-    model.add(Flatten())
-    model.add(Dense(128, activation='relu'))
-    model.add(Dropout(0.5))
-    model.add(Dense(num_classes, activation='softmax'))
-
-    model.compile(optimizer='AdaDelta',
-                loss="categorical_crossentropy", metrics=["accuracy"])
-
-    return model
