@@ -2,6 +2,7 @@ import keras
 import argparse
 import numpy as np
 from utils import helpers
+from ANN import keras_model
 from keras.models import model_from_json
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
@@ -35,7 +36,7 @@ valid = datagen.flow_from_directory(
 
 
 # Network that does all the job
-classifier = helpers.keras_model(NUM_CLASSES)
+classifier = kera_model(NUM_CLASSES)
 
 classifier.compile(
     optimizer=nadam, loss='categorical_crossentropy', metrics=['accuracy']

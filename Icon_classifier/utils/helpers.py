@@ -7,7 +7,6 @@ from numpy import expand_dims
 from keras.layers import Dense
 from keras.layers import Flatten
 from keras.models import model_from_json
-from keras.layers import Conv3D, MaxPooling3D
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
 from keras.layers import Conv2D, Dropout, MaxPooling2D
@@ -34,6 +33,16 @@ def convert_image(im):
     im = img_to_array(im)
     im = np.array([im])
     return im
+
+def argument_parser_for_test():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('-load_model_from', type=str, required=False,
+                        help="specify location of the model to be loaded",
+                        default='pretrained_model')
+    parser.add_argument('-input_image_dir', type=str, required=True,
+                        help="specify path to data",
+                        )
 
 
 def argument_parser_for_train():
@@ -73,22 +82,6 @@ def load_data(LOAD_DATA_FROM):
     )
 
     return train_generator, valid
-
-def keras_model(num_classes):
-    # Network that does all the job
-    classifier = Sequential()
-
-    classifier.add(Dense(100, activation='relu',
-                        input_shape=train_generator.image_shape))
-    classifier.add(Flatten())
-    classifier.add(Dense(80, activation='relu'))
-    classifier.add(Dense(80, activation='relu'))
-    classifier.add(Dense(num_classes,  activation='softmax'))
-
-    nadam = keras.optimizers.nadam(lr=.000000753)
-
-    return classifier
-
 
 
 

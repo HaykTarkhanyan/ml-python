@@ -1,3 +1,4 @@
+import keras
 from keras.layers import Dense
 from keras.layers import Flatten
 from keras.models import Sequential

@@ -14,16 +14,16 @@ from keras.preprocessing.image import img_to_array
 # num of epochs and batch size
 args = helpers.argument_parser_for_train()
 
-FOLDER_TO_SAVE = args.model_save_dir
-FOLDER_TO_LOAD_DATA = args.data_dir
+PATH_TO_SAVE = args.model_save_dir
+PATH_TO_LOAD_DATA = args.data_dir
 
 EPOCHS = args.epochs
 BATCH_SIZE = args.batch_size
 NUM_CLASSES = 10
 
 # load data from csv
-data = pd.read_csv(os.path.join(FOLDER_TO_LOAD_DATA))
-test = pd.read_csv(os.path.join(FOLDER_TO_LOAD_DATA))
+data = pd.read_csv(os.path.join(PATH_TO_LOAD_DATA))
+test = pd.read_csv(os.path.join(PATH_TO_LOAD_DATA))
 
 # get image labels
 y_train = data["label"]
@@ -49,8 +49,8 @@ history = model.fit(x_train, y_train,
 
 # serialize model to JSON
 model_json = model.to_json()
-with open(os.path.join(FOLDER_TO_SAVE), "w") as json_file:
+with open(os.path.join(PATH_TO_SAVE), "w") as json_file:
     json_file.write(model_json)
 # serialize weights to HDF5
-model.save_weights(os.path.join(FOLDER_TO_SAVE))
-print("Saved model to ckpt folder")
+model.save_weights(os.path.join(PATH_TO_SAVE))
+print("Saved model")
