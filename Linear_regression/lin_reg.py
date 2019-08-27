@@ -38,7 +38,6 @@ else:
 
     model_1.fit(X_train, Y_train)
     print("Score is - " + str(model_1.score(X_test, Y_test)))
-    print()
     to_test = np.array(to_test).reshape(1, -1)
     print(model_1.predict(to_test))
 
