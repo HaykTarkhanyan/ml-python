@@ -10,15 +10,14 @@ from keras.models import model_from_json
 from keras.preprocessing.image import img_to_array
 
 
+# PATH_TO_SAVE_WEIGHTS = os.path.join('weights_and_config','model.h5')
+# PATH_TO_SAVE_CONFIG = os.path.join('weights_and_config', 'model.json')
 
-PATH_TO_SAVE_WEIGHTS = os.path.join('weights_and_config','model.h5')
-PATH_TO_SAVE_CONFIG = os.path.join('weights_and_config', 'model.json')
+# PATH_TO_LOAD_DATA = os.path.join('data', 'train.csv')
 
-PATH_TO_LOAD_DATA = os.path.join('data', 'train.csv')
-
-EPOCHS = 7
-BATCH_SIZE = 1
-NUM_CLASSES = 10
+# EPOCHS = 7
+# BATCH_SIZE = 1
+# NUM_CLASSES = 10
 
 # takes data location, path where to save models weights, config 
 # num of epochs and batch size
