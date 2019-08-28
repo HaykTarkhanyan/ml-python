@@ -2,10 +2,6 @@ import cv2
 import numpy as np
 
 
-def __init__():
-    # helps to use this file in another one
-    pass
-
 # Checks if given directory is empty
 def check_input(path):
     try:
