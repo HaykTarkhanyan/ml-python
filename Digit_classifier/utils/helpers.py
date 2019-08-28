@@ -45,22 +45,6 @@ def save_model(folder):
     model.save_weights(os.path.join(folder, "model.h5"))
     print("Saved model to ckpt folder")
 
-def load_data(folder):
-    # load data from csv
-    data = pd.read_csv(os.path.join(folder, 'train.csv'))
-    test = pd.read_csv(os.path.join(folder, 'test.csv'))
-
-    # get image labels
-    y_train = data["label"]
-    del data['label']
-
-    x_train = data.to_numpy()
-    x_train = np.array([i.reshape((28, 28, 1)) for i in x_train])
-
-    # convert labels to vector of zeros and one
-    y_train = keras.utils.to_categorical(y_train, num_classes)
-
-    return x_train, y_train, test
 
 def argument_parser_for_train():
     parser = argparse.ArgumentParser()
