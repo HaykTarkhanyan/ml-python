@@ -70,7 +70,7 @@ def load_model(weights, config):
 
 path = args.input_image_dir
 
-if __name__ == __main__:
+if __name__ == "__main__":
     # load model
     loaded_model = load_model(LOAD_MODEL_WEIGHTS, LOAD_MODEL_CONFIG)
     # before trying to predict making sure that directory is valid

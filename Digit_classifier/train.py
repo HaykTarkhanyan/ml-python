@@ -91,7 +91,7 @@ def save_model(model,path_to_save_weights, path_to_save_config):
     model.save_weights(os.path.join(path_to_save_weights))
     print("Saved model")
 
-if __name__ == __main__:
+if __name__ == "__main__":
     # load data
     x_train, y_train = load_data(PATH_TO_LOAD_DATA)
     # train model
