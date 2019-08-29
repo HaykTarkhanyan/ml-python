@@ -12,8 +12,6 @@ from keras.preprocessing.image import img_to_array
 from keras.layers import Conv2D, Dropout, MaxPooling2D
 from keras.preprocessing.image import ImageDataGenerator
 
-def __init__():
-    pass
 
 # Checks if given directory is empty
 def check_input(path):
@@ -33,17 +31,6 @@ def convert_image(im):
     im = img_to_array(im)
     im = np.array([im])
     return im
-
-def argument_parser_for_test():
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument('-load_model_from', type=str, required=False,
-                        help="specify location of the model to be loaded",
-                        default='pretrained_model')
-    parser.add_argument('-input_image_dir', type=str, required=True,
-                        help="specify path to data",
-                        )
-
 
 def argument_parser_for_train():
     parser = argparse.ArgumentParser()
