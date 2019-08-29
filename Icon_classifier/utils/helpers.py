@@ -32,25 +32,6 @@ def convert_image(im):
     im = np.array([im])
     return im
 
-def load_data(LOAD_DATA_FROM):
-    # importing data
-    data_get = ImageDataGenerator()
-
-    datagen = ImageDataGenerator(validation_split=0.2)
-
-    train_generator = datagen.flow_from_directory(
-        LOAD_DATA_FROM,
-        target_size=(25, 25),
-        batch_size=8,
-    )
-
-    valid = datagen.flow_from_directory(
-        LOAD_DATA_FROM,
-        target_size=(25, 25),
-    )
-
-    return train_generator, valid
-
 
 
 
