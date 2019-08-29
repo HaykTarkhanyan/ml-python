@@ -36,12 +36,13 @@ def load_model():
     return loaded_model
 
 if __name__ == "__main__":
+    # checks if input is valid
     if check_input(path):
         # parse arguments 
         args = argument_parser()
         path = args.input_image_dir
         # load model
-        loaded_model = load_model()
+        loaded_model = load_model(LOAD_MODEL_FROM)
         # convert image
         im = helpers.convert_image(path)
         # print prediction with higheset probability
