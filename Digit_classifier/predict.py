@@ -49,7 +49,6 @@ if __name__ == "__main__":
     path = args.input_image_dir
     LOAD_MODEL_WEIGHTS = args.weights
     LOAD_MODEL_CONFIG = args.config
-
     # load model
     loaded_model = load_model(LOAD_MODEL_WEIGHTS, LOAD_MODEL_CONFIG)
     # before trying to predict making sure that directory is valid
