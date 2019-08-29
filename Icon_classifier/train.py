@@ -74,6 +74,8 @@ def keras_model(train_generator, valid):
         validation_steps=1000 // BATCH_SIZE,
     )
 
+    return model, history
+
 def save_model():
     # serialize model to JSON
     model_json = model.to_json()
