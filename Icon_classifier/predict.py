@@ -6,8 +6,6 @@ from utils import helpers
 from keras.models import model_from_json
 from keras.preprocessing.image import img_to_array
 
-args = helpers.argument_parser_for_test()
-
 CLASSES = sorted(['facebook', 'twitter', 'whatsapp', 'linkedin', 'reddit'])
 LOAD_MODEL_FROM = "weights_and_config"
 
@@ -37,17 +35,18 @@ def load_model():
 
     return loaded_model
 
-if check_input(path):
-    # parse arguments 
-    args = argument_parser()
-    path = args.input_image_dir
-    # load model
-    loaded_model = load_model()
-    # convert image
-    im = helpers.convert_image(path)
-    # print prediction with higheset probability
-    predic = loaded_model.predict(im)
-    print(classes[np.array(predic).argmax()])
+if __name__ == "__main__":
+    if check_input(path):
+        # parse arguments 
+        args = argument_parser()
+        path = args.input_image_dir
+        # load model
+        loaded_model = load_model()
+        # convert image
+        im = helpers.convert_image(path)
+        # print prediction with higheset probability
+        predic = loaded_model.predict(im)
+        print(classes[np.array(predic).argmax()])
 
-else:
-    print ("Failed to load the image")
+    else:
+        print ("Failed to load the image")
