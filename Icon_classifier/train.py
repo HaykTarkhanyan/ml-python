@@ -8,14 +8,11 @@ from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import ImageDataGenerator
 
+PATH_TO_SAVE = os.path.join('weight_and_config')
+PATH_TO_LOAD_DATA = os.path.join('data', 'train')
 
-args = helpers.argument_parser_for_train()
-
-PATH_TO_SAVE = args.model_save_dir
-PATH_TO_LOAD_DATA = args.data_dir
-
-EPOCHS = args.epochs
-BATCH_SIZE = args.batch_size
+EPOCHS = 7
+BATCH_SIZE = 1
 NUM_CLASSES = 10
 
 
@@ -88,6 +85,11 @@ def save_model():
 if __name__ == "__main__":
     # parse arguments 
     args = argument_parser()
+    PATH_TO_SAVE = args.model_save_dir
+    PATH_TO_LOAD_DATA = args.data_dir
+    EPOCHS = args.epochs
+    BATCH_SIZE = args.batch_size
+
     # load data
     train_generator, valid = load_data(PATH_TO_LOAD_DATA)
     # train model
