@@ -7,52 +7,27 @@ from check_input import check_input
 from keras.models import model_from_json
 from keras.preprocessing.image import img_to_array
 
-# # first variant
-# # can be overwritten via argparser
-# LOAD_MODEL_WEIGHTS = "weights_and_config/model_cnn.h5"
-# LOAD_MODEL_CONFIG = "weights_and_config/model_cnn.json"
+# can be overwritten via argparser
+LOAD_MODEL_WEIGHTS = "weights_and_config/model_cnn.h5"
+LOAD_MODEL_CONFIG = "weights_and_config/model_cnn.json"
 
+def argument_parser():
+    parser = argparse.ArgumentParser()
 
-# parser = argparse.ArgumentParser()
+    parser.add_argument('-weights', type=str, required=False,
+                        help="specify location of the models weights to be loaded",
+                        default='weights_and_config/model_cnn.h5')
 
-# parser.add_argument('-weights', type=str, required=False,
-#                     help="specify location of the models weights to be loaded",
-#                     default='weights_and_config/model_cnn.h5')
+    parser.add_argument('-config', type=str, required=False,
+                        help="specify location of the models config file to be loaded",
+                        default='weights_and_config/model_cnn.json')
 
-# parser.add_argument('-config', type=str, required=False,
-#                     help="specify location of the models config file to be loaded",
-#                     default='weights_and_config/model_cnn.json')
+    parser.add_argument('-input_image_dir', type=str, required=True,
+                        help="specify path to data",
+                        )
 
-# parser.add_argument('-input_image_dir', type=str, required=True,
-#                     help="specify path to data",
-#                     )
-
-# args = parser.parse_args()
-
-# LOAD_MODEL_WEIGHTS = args.weights
-# LOAD_MODEL_CONFIG = args.config
-
-#################################################################################
-# second variant
-
-# parser = argparse.ArgumentParser()
-
-# parser.add_argument('-weights', type=str, required=False,
-#                     help="specify location of the models weights to be loaded",
-#                     default='weights_and_config/model_cnn.h5')
-
-# parser.add_argument('-config', type=str, required=False,
-#                     help="specify location of the models config file to be loaded",
-#                     default='weights_and_config/model_cnn.json')
-
-# parser.add_argument('-input_image_dir', type=str, required=True,
-#                     help="specify path to data",
-#                     )
-
-# args = parser.parse_args()
-
-# LOAD_MODEL_WEIGHTS = args.weights
-# LOAD_MODEL_CONFIG = args.config
+    args = parser.parse_args()
+    return args
 
 
 def load_model(weights, config):    
@@ -68,9 +43,13 @@ def load_model(weights, config):
     return loaded_model
 
 
-path = args.input_image_dir
-
 if __name__ == "__main__":
+    # parse arguments 
+    args = argument_parser()
+    path = args.input_image_dir
+    LOAD_MODEL_WEIGHTS = args.weights
+    LOAD_MODEL_CONFIG = args.config
+
     # load model
     loaded_model = load_model(LOAD_MODEL_WEIGHTS, LOAD_MODEL_CONFIG)
     # before trying to predict making sure that directory is valid
