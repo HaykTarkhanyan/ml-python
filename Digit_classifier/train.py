@@ -21,26 +21,28 @@ from keras.preprocessing.image import img_to_array
 
 # takes data location, path where to save models weights, config 
 # num of epochs and batch size
-parser = argparse.ArgumentParser()
+    def argument_parser():
+    parser = argparse.ArgumentParser()
 
-parser.add_argument('-save_weights', type=str, required=False,
-                    help="specify location where model will be saved",
-                    default=os.path.join('weights_and_config','model.h5'))
-parser.add_argument('-save_config', type=str, required=False,
-                    help="specify location where model will be saved",
-                    default=os.path.join('weights_and_config', 'model.json'))
-parser.add_argument('-data_dir', type=str, required=False,
-                    help="specify path to data",
-                    default='data')
-parser.add_argument('-epochs', type=str, required=False,
-                    help="specify number of epochs to train",
-                    default=7)
-parser.add_argument('-batch_size', type=str, required=False,
-                    help="specify batch_size",
-                    default=1)
+    parser.add_argument('-save_weights', type=str, required=False,
+                        help="specify location where model will be saved",
+                        default=os.path.join('weights_and_config','model.h5'))
+    parser.add_argument('-save_config', type=str, required=False,
+                        help="specify location where model will be saved",
+                        default=os.path.join('weights_and_config', 'model.json'))
+    parser.add_argument('-data_dir', type=str, required=False,
+                        help="specify path to data",
+                        default='data')
+    parser.add_argument('-epochs', type=str, required=False,
+                        help="specify number of epochs to train",
+                        default=7)
+    parser.add_argument('-batch_size', type=str, required=False,
+                        help="specify batch_size",
+                        default=1)
 
-args = parser.parse_args()
+    args = parser.parse_args()
 
+    return args
 
 
 PATH_TO_SAVE_WEIGHTS = args.model_save_weights
@@ -92,6 +94,8 @@ def save_model(model,path_to_save_weights, path_to_save_config):
     print("Saved model")
 
 if __name__ == "__main__":
+    # parse arguments 
+    args = argument_parser()
     # load data
     x_train, y_train = load_data(PATH_TO_LOAD_DATA)
     # train model
