@@ -60,7 +60,7 @@ def load_data(path):
 
 def keras_model(train_generator, valid):
     # Network that does all the job
-    classifier = kera_model(NUM_CLASSES)
+    classifier = keras_model(NUM_CLASSES)
 
     classifier.compile(
         optimizer=nadam, loss='categorical_crossentropy', metrics=['accuracy']
