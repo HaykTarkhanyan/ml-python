@@ -58,7 +58,7 @@ def load_data(path):
 
     return train, valid
 
-def keras_model(train_generator, valid):
+def train_model(train_generator, valid):
     # Network that does all the job
     classifier = keras_model(NUM_CLASSES)
 
