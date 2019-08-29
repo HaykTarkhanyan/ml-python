@@ -32,25 +32,6 @@ def convert_image(im):
     im = np.array([im])
     return im
 
-def argument_parser_for_train():
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument('-model_save_dir', type=str, required=False,
-                        help="specify location where model will be saved",
-                        default='pretrained_model')
-    parser.add_argument('-data_dir', type=str, required=False,
-                        help="specify path to data",
-                        default='data')
-    parser.add_argument('-epochs', type=str, required=False,
-                        help="specify number of epochs to train",
-                        default='7')
-    parser.add_argument('-batch_size', type=str, required=False,
-                        help="specify batch_size",
-                        default='1')
-
-    args = parser.parse_args()
-    return args
-
 def load_data(LOAD_DATA_FROM):
     # importing data
     data_get = ImageDataGenerator()
